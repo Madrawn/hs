@@ -1,9 +1,9 @@
-﻿using HearthMirror.;
+﻿using HearthMirror;
 using HearthDb;
 using System.Text.Json;
 
-Console.WriteLine("Press Enter to continue...");
-Console.ReadLine();
+//Console.WriteLine("Press Enter to continue...");
+//Console.ReadLine();
 Console.WriteLine("Hello, World!");
 
 try
@@ -23,6 +23,8 @@ try
     else
     {
         Console.WriteLine("Collection is empty");
+        Console.ReadLine();
+
         return;
     }
 
@@ -85,6 +87,7 @@ try
 catch (Exception ex)
 {
     Console.WriteLine($"An error occurred: {ex.Message}");
+    Console.ReadLine();
 }
 public class CardSummary
 {

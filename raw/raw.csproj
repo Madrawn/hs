@@ -1,16 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Platforms>AnyCPU;x86</Platforms>
-    <PublishSingleFile>true</PublishSingleFile>
-    <SelfContained>true</SelfContained>
+    <PlatformTarget>x86</PlatformTarget>
     <RuntimeIdentifier>win-x86</RuntimeIdentifier>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <AssemblyName>CardCollectionFetcher</AssemblyName>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="**\*.pdb" />
+    <None Remove="**\*.xml" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <Compile Remove="HearthMirror\**" />
@@ -18,5 +28,14 @@
     <None Remove="HearthMirror\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HearthDb\HearthDb\HearthDb.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="HearthMirror">
+      <HintPath>..\HearthMirror\HearthMirror.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
 </Project>
