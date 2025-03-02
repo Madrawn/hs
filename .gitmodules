@@ -1,11 +1,6 @@
-[submodule "HearthMirror"]
-	path = HearthMirror
-	url = https://github.com/Bright1992/HearthMirror.git
-	branch = master
 [submodule "HearthDb"]
 	path = HearthDb
 	url = https://github.com/HearthSim/HearthDb.git
 [submodule "hsdata"]
 	path = hsdata
 	url = https://github.com/HearthSim/hsdata.git
-
