@@ -6,6 +6,7 @@ using System.Text.Json;
 //Console.ReadLine();
 Console.WriteLine("Hello, World!");
 
+var allCards = HearthDb.Cards.All.Select(card => card.Value);
 try
 {
     var coll = await Task.Run(() =>
@@ -29,13 +30,15 @@ try
     }
 
     var myCards = SummarizeCollection(coll);
-    var CardsByName = HearthDb.Cards.All.Select(card => card.Value).DistinctBy(card => card.Name).ToDictionary(card => card.Name);
+    var CardsByName = allCards.Where(x=> !x.IsClassic && !x.IsWild && x.Collectible && x.Set != HearthDb.Enums.CardSet.PLACEHOLDER_202204).DistinctBy(card => card.Name).ToDictionary(card => card.Name);
     WriteCardDetailsToJson(myCards, "collection.json");
 
 
     void WriteCardDetailsToJson(List<CardSummary> myCards, string filePath)
     {
-        var cardDetailsList = myCards.Select(cardSummary => new CardDetail
+        var validMyCards = myCards.Where(cardSummary => CardsByName.ContainsKey(cardSummary.Name)).ToList();
+
+        var cardDetailsList = validMyCards.Select(cardSummary => new CardDetail
         {
             Name = cardSummary.Name,
             TotalCount = cardSummary.TotalCount,
