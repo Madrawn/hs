@@ -6,14 +6,12 @@
     <TargetFramework>net8.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PlatformTarget>x86</PlatformTarget>
     <RuntimeIdentifier>win-x86</RuntimeIdentifier>
     <PublishSingleFile>true</PublishSingleFile>
     <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
     <PublishReadyToRun>true</PublishReadyToRun>
-    <DebugType>none</DebugType>
-    <DebugSymbols>false</DebugSymbols>
     <AssemblyName>CardCollectionFetcher</AssemblyName>
+    <Platforms>AnyCPU</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,12 +27,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HearthDb\HearthDb\HearthDb.csproj" />
+    <Folder Include="Properties\" />
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="HearthDb">
+      <HintPath>..\HearthDb\HearthDb\bin\Release\netstandard2.0\HearthDb.dll</HintPath>
+    </Reference>
     <Reference Include="HearthMirror">
-      <HintPath>..\HearthMirror\HearthMirror.dll</HintPath>
+      <HintPath>..\lib\HearthMirror.dll</HintPath>
     </Reference>
   </ItemGroup>
 
